@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T08:21:29.986Z</updated>
+    <updated>2020-03-07T08:45:15.586Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qianfengg.github.io"/>
     <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
@@ -15,15 +15,15 @@
         <id>https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/</id>
         <link href="https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/">
         </link>
-        <updated>2020-03-07T07:19:12.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="树状数据结构相关题目">树状数据结构相关题目</h2>
+        <updated>2020-03-07T08:36:47.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="題目">題目</h2>
 <h3 id="概述">概述</h3>
 <ul>
 <li>这边的数据，就拿我们当年的童年，war3举例子</li>
 <li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
 <li>然后就愉快的做题吧</li>
 </ul>
-<h3 id="题目">题目</h3>
+<h3 id="练习">练习</h3>
 <ul>
 <li>
 <p>先来看下数据格式</p>
@@ -130,26 +130,21 @@
 <p>根据id获取它所有的下级节点(孩子，孙子...)</p>
 </li>
 <li>
-<p>根据给定的list生成树状结构，如下图所示</p>
-<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583569245146.jpg" alt="" loading="lazy"></figure>
+<p>根据给定的list生成树状结构，类似下图</p>
+<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583570676094.jpg" alt="" loading="lazy"></figure>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="参考答案">参考答案</h2>
-<h3 id="以下答案可能有更好的处理方式欢迎大家讨论">以下答案可能有更好的处理方式，欢迎大家讨论</h3>
-<ul>
-<li>
-<p>获取自身</p>
+<h2 id="答案">答案</h2>
+<h3 id="获取自身">获取自身</h3>
 <pre><code class="language-js">function getSelf(list, id){
     return list.filter(item =&gt; item.id === id)[0];
 }
 
 // console.log(getSelf(list, 15));    
 </code></pre>
-</li>
-<li>
-<p>获取父亲</p>
+<h3 id="获取父亲">获取父亲</h3>
 <pre><code class="language-js">function getParent(list, id){
     let self = getSelf(list, id);
     return getSelf(list, self.pid);
@@ -157,18 +152,14 @@
 
 // console.log(getParent(list, 15));    
 </code></pre>
-</li>
-<li>
-<p>获取孩子</p>
+<h3 id="获取孩子">获取孩子</h3>
 <pre><code class="language-js">function getChildren(list, id){
     return list.filter(item =&gt; item.pid === id);
 }
 
 // console.log(getChildren(list, 5));    
 </code></pre>
-</li>
-<li>
-<p>获取上级(父亲，爷爷...)</p>
+<h3 id="获取上级父亲爷爷">获取上级(父亲，爷爷...)</h3>
 <pre><code class="language-js">function getAllParent(list, id){
     let parent = getParent(list, id);
     let result = [];
@@ -179,9 +170,7 @@
     return result;
 }    
 </code></pre>
-</li>
-<li>
-<p>获取下级(孩子，孙子...)</p>
+<h3 id="获取下级孩子孙子">获取下级(孩子，孙子...)</h3>
 <pre><code class="language-js">function getAllChildren(list, id){
     let children = getChildren(list, id);
     let result = [].concat(children);
@@ -193,9 +182,7 @@
 
 // console.log(getAllChildren(list, 1));
 </code></pre>
-</li>
-<li>
-<p>列表转树状 - 递归实现</p>
+<h3 id="列表转树状-递归实现">列表转树状 - 递归实现</h3>
 <pre><code class="language-js">function list2Tree(list, pid){
     let len = list.length;
     function loop(pid){
@@ -214,8 +201,6 @@
 
 console.log(list2Tree(list, 0));    
 </code></pre>
-</li>
-</ul>
 ]]></content>
     </entry>
 </feed>

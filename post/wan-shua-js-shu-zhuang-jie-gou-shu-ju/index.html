@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>玩耍JS树状结构数据 | 梅利奥猪猪の窝</title>
-<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583569285134">
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583570709533">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="玩耍JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
@@ -11,19 +11,20 @@
 
 
 
-    <meta name="description" content="树状数据结构相关题目
+    <meta name="description" content="題目
 概述
 
 这边的数据，就拿我们当年的童年，war3举例子
 本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级
 然后就愉快的做题吧
 
-题目
+练习
 
 
 先来看下数据格式
 let list = [
-  ..." />
+    {
+    ..." />
     <meta name="keywords" content="学习,js" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -33,7 +34,7 @@ let list = [
       <div class="main-content">
         <div class="site-header">
   <a href="https://qianfengg.github.io">
-  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583569285134" alt="">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583570709533" alt="">
   </a>
   <h1 class="site-title">
     梅利奥猪猪の窝
@@ -86,14 +87,14 @@ let list = [
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="树状数据结构相关题目">树状数据结构相关题目</h2>
+                <h2 id="題目">題目</h2>
 <h3 id="概述">概述</h3>
 <ul>
 <li>这边的数据，就拿我们当年的童年，war3举例子</li>
 <li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
 <li>然后就愉快的做题吧</li>
 </ul>
-<h3 id="题目">题目</h3>
+<h3 id="练习">练习</h3>
 <ul>
 <li>
 <p>先来看下数据格式</p>
@@ -200,26 +201,21 @@ let list = [
 <p>根据id获取它所有的下级节点(孩子，孙子...)</p>
 </li>
 <li>
-<p>根据给定的list生成树状结构，如下图所示</p>
-<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583569245146.jpg" alt="" loading="lazy"></figure>
+<p>根据给定的list生成树状结构，类似下图</p>
+<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583570676094.jpg" alt="" loading="lazy"></figure>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="参考答案">参考答案</h2>
-<h3 id="以下答案可能有更好的处理方式欢迎大家讨论">以下答案可能有更好的处理方式，欢迎大家讨论</h3>
-<ul>
-<li>
-<p>获取自身</p>
+<h2 id="答案">答案</h2>
+<h3 id="获取自身">获取自身</h3>
 <pre><code class="language-js">function getSelf(list, id){
     return list.filter(item =&gt; item.id === id)[0];
 }
 
 // console.log(getSelf(list, 15));    
 </code></pre>
-</li>
-<li>
-<p>获取父亲</p>
+<h3 id="获取父亲">获取父亲</h3>
 <pre><code class="language-js">function getParent(list, id){
     let self = getSelf(list, id);
     return getSelf(list, self.pid);
@@ -227,18 +223,14 @@ let list = [
 
 // console.log(getParent(list, 15));    
 </code></pre>
-</li>
-<li>
-<p>获取孩子</p>
+<h3 id="获取孩子">获取孩子</h3>
 <pre><code class="language-js">function getChildren(list, id){
     return list.filter(item =&gt; item.pid === id);
 }
 
 // console.log(getChildren(list, 5));    
 </code></pre>
-</li>
-<li>
-<p>获取上级(父亲，爷爷...)</p>
+<h3 id="获取上级父亲爷爷">获取上级(父亲，爷爷...)</h3>
 <pre><code class="language-js">function getAllParent(list, id){
     let parent = getParent(list, id);
     let result = [];
@@ -249,9 +241,7 @@ let list = [
     return result;
 }    
 </code></pre>
-</li>
-<li>
-<p>获取下级(孩子，孙子...)</p>
+<h3 id="获取下级孩子孙子">获取下级(孩子，孙子...)</h3>
 <pre><code class="language-js">function getAllChildren(list, id){
     let children = getChildren(list, id);
     let result = [].concat(children);
@@ -263,9 +253,7 @@ let list = [
 
 // console.log(getAllChildren(list, 1));
 </code></pre>
-</li>
-<li>
-<p>列表转树状 - 递归实现</p>
+<h3 id="列表转树状-递归实现">列表转树状 - 递归实现</h3>
 <pre><code class="language-js">function list2Tree(list, pid){
     let len = list.length;
     function loop(pid){
@@ -284,23 +272,26 @@ let list = [
 
 console.log(list2Tree(list, 0));    
 </code></pre>
-</li>
-</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">树状数据结构相关题目</a>
+<li><a href="#%E9%A1%8C%E7%9B%AE">題目</a>
 <ul>
 <li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
-<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
+<li><a href="#%E7%BB%83%E4%B9%A0">练习</a></li>
 </ul>
 </li>
-<li><a href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88">参考答案</a>
+<li><a href="#%E7%AD%94%E6%A1%88">答案</a>
 <ul>
-<li><a href="#%E4%BB%A5%E4%B8%8B%E7%AD%94%E6%A1%88%E5%8F%AF%E8%83%BD%E6%9C%89%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6%E8%AE%A8%E8%AE%BA">以下答案可能有更好的处理方式，欢迎大家讨论</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E8%87%AA%E8%BA%AB">获取自身</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E7%88%B6%E4%BA%B2">获取父亲</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E5%AD%A9%E5%AD%90">获取孩子</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E4%B8%8A%E7%BA%A7%E7%88%B6%E4%BA%B2%E7%88%B7%E7%88%B7">获取上级(父亲，爷爷...)</a></li>
+<li><a href="#%E8%8E%B7%E5%8F%96%E4%B8%8B%E7%BA%A7%E5%AD%A9%E5%AD%90%E5%AD%99%E5%AD%90">获取下级(孩子，孙子...)</a></li>
+<li><a href="#%E5%88%97%E8%A1%A8%E8%BD%AC%E6%A0%91%E7%8A%B6-%E9%80%92%E5%BD%92%E5%AE%9E%E7%8E%B0">列表转树状 - 递归实现</a></li>
 </ul>
 </li>
 </ul>
