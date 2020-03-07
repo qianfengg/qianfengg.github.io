@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T07:47:45.777Z</updated>
+    <updated>2020-03-07T08:21:29.986Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qianfengg.github.io"/>
     <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
@@ -11,24 +11,19 @@
     <icon>https://qianfengg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 梅利奥猪猪の窝</rights>
     <entry>
-        <title type="html"><![CDATA[玩耍 - JS树状结构数据]]></title>
+        <title type="html"><![CDATA[玩耍JS树状结构数据]]></title>
         <id>https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/</id>
         <link href="https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/">
         </link>
         <updated>2020-03-07T07:19:12.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="树状数据结构">树状数据结构</h2>
-<blockquote>
-<p>背景</p>
-</blockquote>
+        <content type="html"><![CDATA[<h2 id="树状数据结构相关题目">树状数据结构相关题目</h2>
+<h3 id="概述">概述</h3>
 <ul>
-<li>算是个简单的算法吧，其实不难</li>
 <li>这边的数据，就拿我们当年的童年，war3举例子</li>
 <li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
 <li>然后就愉快的做题吧</li>
 </ul>
-<blockquote>
-<p>练习</p>
-</blockquote>
+<h3 id="题目">题目</h3>
 <ul>
 <li>
 <p>先来看下数据格式</p>
@@ -119,19 +114,30 @@
 <li>
 <p>完成以下题目</p>
 <ul>
-<li>根据id获取对应的数据</li>
-<li>根据id获取它的父亲</li>
-<li>根据id获取它的孩子节点</li>
-<li>根据id获取它所有的上级节点(父，爷...)</li>
-<li>根据id获取它所有的下级节点(孩子，孙子...)</li>
-<li>根据给定的list生成树状结构</li>
+<li>
+<p>根据id获取对应的数据</p>
+</li>
+<li>
+<p>根据id获取它的父亲</p>
+</li>
+<li>
+<p>根据id获取它的孩子节点</p>
+</li>
+<li>
+<p>根据id获取它所有的上级节点(父，爷...)</p>
+</li>
+<li>
+<p>根据id获取它所有的下级节点(孩子，孙子...)</p>
+</li>
+<li>
+<p>根据给定的list生成树状结构，如下图所示</p>
+<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583569245146.jpg" alt="" loading="lazy"></figure>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="参考答案">参考答案</h2>
-<blockquote>
-<p>可能有更好的处理方式，欢迎大家讨论</p>
-</blockquote>
+<h3 id="以下答案可能有更好的处理方式欢迎大家讨论">以下答案可能有更好的处理方式，欢迎大家讨论</h3>
 <ul>
 <li>
 <p>获取自身</p>

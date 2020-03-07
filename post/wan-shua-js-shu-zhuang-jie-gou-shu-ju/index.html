@@ -2,32 +2,28 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>玩耍 - JS树状结构数据 | 梅利奥猪猪の窝</title>
-<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583567258749">
+<title>玩耍JS树状结构数据 | 梅利奥猪猪の窝</title>
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583569285134">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="玩耍 - JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="玩耍JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="树状数据结构
+    <meta name="description" content="树状数据结构相关题目
+概述
 
-背景
-
-
-算是个简单的算法吧，其实不难
 这边的数据，就拿我们当年的童年，war3举例子
 本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级
 然后就愉快的做题吧
 
-
-练习
-
+题目
 
 
 先来看下数据格式
-..." />
+let list = [
+  ..." />
     <meta name="keywords" content="学习,js" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -37,7 +33,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qianfengg.github.io">
-  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583567258749" alt="">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583569285134" alt="">
   </a>
   <h1 class="site-title">
     梅利奥猪猪の窝
@@ -66,7 +62,7 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              玩耍 - JS树状结构数据
+              玩耍JS树状结构数据
             </h2>
             <div class="post-info">
               <span>
@@ -86,21 +82,18 @@
               
             </div>
             
+              <img class="post-feature-image" src="https://qianfengg.github.io/post-images/wan-shua-js-shu-zhuang-jie-gou-shu-ju.jpg" alt="">
+            
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h2 id="树状数据结构">树状数据结构</h2>
-<blockquote>
-<p>背景</p>
-</blockquote>
+                <h2 id="树状数据结构相关题目">树状数据结构相关题目</h2>
+<h3 id="概述">概述</h3>
 <ul>
-<li>算是个简单的算法吧，其实不难</li>
 <li>这边的数据，就拿我们当年的童年，war3举例子</li>
 <li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
 <li>然后就愉快的做题吧</li>
 </ul>
-<blockquote>
-<p>练习</p>
-</blockquote>
+<h3 id="题目">题目</h3>
 <ul>
 <li>
 <p>先来看下数据格式</p>
@@ -191,19 +184,30 @@
 <li>
 <p>完成以下题目</p>
 <ul>
-<li>根据id获取对应的数据</li>
-<li>根据id获取它的父亲</li>
-<li>根据id获取它的孩子节点</li>
-<li>根据id获取它所有的上级节点(父，爷...)</li>
-<li>根据id获取它所有的下级节点(孩子，孙子...)</li>
-<li>根据给定的list生成树状结构</li>
+<li>
+<p>根据id获取对应的数据</p>
+</li>
+<li>
+<p>根据id获取它的父亲</p>
+</li>
+<li>
+<p>根据id获取它的孩子节点</p>
+</li>
+<li>
+<p>根据id获取它所有的上级节点(父，爷...)</p>
+</li>
+<li>
+<p>根据id获取它所有的下级节点(孩子，孙子...)</p>
+</li>
+<li>
+<p>根据给定的list生成树状结构，如下图所示</p>
+<figure data-type="image" tabindex="1"><img src="https://qianfengg.github.io/post-images/1583569245146.jpg" alt="" loading="lazy"></figure>
+</li>
 </ul>
 </li>
 </ul>
 <h2 id="参考答案">参考答案</h2>
-<blockquote>
-<p>可能有更好的处理方式，欢迎大家讨论</p>
-</blockquote>
+<h3 id="以下答案可能有更好的处理方式欢迎大家讨论">以下答案可能有更好的处理方式，欢迎大家讨论</h3>
 <ul>
 <li>
 <p>获取自身</p>
@@ -288,8 +292,17 @@ console.log(list2Tree(list, 0));
                 <ul class="markdownIt-TOC">
 <li>
 <ul>
-<li><a href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">树状数据结构</a></li>
-<li><a href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88">参考答案</a></li>
+<li><a href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E9%A2%98%E7%9B%AE">树状数据结构相关题目</a>
+<ul>
+<li><a href="#%E6%A6%82%E8%BF%B0">概述</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88">参考答案</a>
+<ul>
+<li><a href="#%E4%BB%A5%E4%B8%8B%E7%AD%94%E6%A1%88%E5%8F%AF%E8%83%BD%E6%9C%89%E6%9B%B4%E5%A5%BD%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E6%AC%A2%E8%BF%8E%E5%A4%A7%E5%AE%B6%E8%AE%A8%E8%AE%BA">以下答案可能有更好的处理方式，欢迎大家讨论</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
