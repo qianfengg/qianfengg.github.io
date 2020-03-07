@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T07:22:46.107Z</updated>
+    <updated>2020-03-07T07:25:04.148Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qianfengg.github.io"/>
     <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
@@ -10,6 +10,95 @@
     <logo>https://qianfengg.github.io/images/avatar.png</logo>
     <icon>https://qianfengg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 梅利奥猪猪の窝</rights>
+    <entry>
+        <title type="html"><![CDATA[JS树状结构 - 解答]]></title>
+        <id>https://qianfengg.github.io/post/js-shu-zhuang-jie-gou-jie-da/</id>
+        <link href="https://qianfengg.github.io/post/js-shu-zhuang-jie-gou-jie-da/">
+        </link>
+        <updated>2020-03-07T07:23:05.000Z</updated>
+        <content type="html"><![CDATA[<blockquote>
+<p>答案</p>
+</blockquote>
+<ul>
+<li>
+<p>获取自身</p>
+<pre><code class="language-js">function getSelf(list, id){
+    return list.filter(item =&gt; item.id === id)[0];
+}
+
+// console.log(getSelf(list, 15));    
+</code></pre>
+</li>
+<li>
+<p>获取父亲</p>
+<pre><code class="language-js">function getParent(list, id){
+    let self = getSelf(list, id);
+    return getSelf(list, self.pid);
+}
+
+// console.log(getParent(list, 15));    
+</code></pre>
+</li>
+<li>
+<p>获取孩子</p>
+<pre><code class="language-js">function getChildren(list, id){
+    return list.filter(item =&gt; item.pid === id);
+}
+
+// console.log(getChildren(list, 5));    
+</code></pre>
+</li>
+<li>
+<p>获取上级(父亲，爷爷...)</p>
+<pre><code class="language-js">function getAllParent(list, id){
+    let parent = getParent(list, id);
+    let result = [];
+    while(parent){
+        result.unshift(parent);
+        parent = getParent(list, parent.id);
+    }
+    return result;
+}    
+</code></pre>
+</li>
+<li>
+<p>获取下级(孩子，孙子...)</p>
+<pre><code class="language-js">function getAllChildren(list, id){
+    let children = getChildren(list, id);
+    let result = [].concat(children);
+    children.forEach(child =&gt; {
+        result = result.concat(getChildren(list, child.id));
+    })
+    return result;
+}
+
+// console.log(getAllChildren(list, 1));
+</code></pre>
+</li>
+<li>
+<p>列表转树状 - 递归实现</p>
+<pre><code class="language-js">function list2Tree(list, pid){
+    let len = list.length;
+    function loop(pid){
+        let res = [];
+        for(let i = 0; i &lt; len; i++){
+            let item = list[i];
+            if(item.pid === pid){
+                item.children = loop(item.id);
+                res.push(item);
+            }
+        }
+        return res;
+    }
+    return loop(pid);
+}
+
+console.log(list2Tree(list, 0));    
+</code></pre>
+</li>
+</ul>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[玩耍 - JS树状结构数据]]></title>
         <id>https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/</id>
