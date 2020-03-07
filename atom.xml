@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://qianfengg.github.io/guqianfeng/</id>
+    <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T05:51:53.506Z</updated>
+    <updated>2020-03-07T06:09:21.636Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://qianfengg.github.io/guqianfeng/"/>
-    <link rel="self" href="https://qianfengg.github.io/guqianfeng/atom.xml"/>
+    <link rel="alternate" href="https://qianfengg.github.io"/>
+    <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
     <subtitle>for my dream</subtitle>
-    <logo>https://qianfengg.github.io/guqianfeng/images/avatar.png</logo>
-    <icon>https://qianfengg.github.io/guqianfeng/favicon.ico</icon>
+    <logo>https://qianfengg.github.io/images/avatar.png</logo>
+    <icon>https://qianfengg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 梅利奥猪猪の窝</rights>
 </feed>
