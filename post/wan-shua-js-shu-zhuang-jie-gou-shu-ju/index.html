@@ -1,0 +1,275 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>玩耍 - JS树状结构数据 | 梅利奥猪猪の窝</title>
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583565741270">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="玩耍 - JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="树状数据结构
+
+背景
+
+
+算是个简单的算法吧，其实不难
+这边的数据，就拿我们当年的童年，war3举例子
+本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级
+然后就愉快的做题吧
+
+
+练习
+
+
+
+先来看下数据格式
+..." />
+    <meta name="keywords" content="学习,js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qianfengg.github.io">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583565741270" alt="">
+  </a>
+  <h1 class="site-title">
+    梅利奥猪猪の窝
+  </h1>
+  <p class="site-description">
+    for my dream
+  </p>
+  <div class="menu-container">
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              玩耍 - JS树状结构数据
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-07
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://qianfengg.github.io/tag/f3f8BA87M/" class="post-tag">
+                  # 学习
+                </a>
+              
+                <a href="https://qianfengg.github.io/tag/o4KL-ey2g/" class="post-tag">
+                  # js
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://qianfengg.github.io/post-images/wan-shua-js-shu-zhuang-jie-gou-shu-ju.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="树状数据结构">树状数据结构</h1>
+<blockquote>
+<p>背景</p>
+</blockquote>
+<ul>
+<li>算是个简单的算法吧，其实不难</li>
+<li>这边的数据，就拿我们当年的童年，war3举例子</li>
+<li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
+<li>然后就愉快的做题吧</li>
+</ul>
+<blockquote>
+<p>练习</p>
+</blockquote>
+<ul>
+<li>
+<p>先来看下数据格式</p>
+<pre><code class="language-js">let list = [
+    {
+        id: 0,
+        name: &quot;兽族英雄技能&quot;,
+        pid: -1
+    },
+    {
+        id: 1,
+        name: &quot;剑圣&quot;,
+        pid: 0
+    },
+    {
+        id: 2,
+        name: &quot;牛头人酋长&quot;,
+        pid: 0
+    },
+    {
+        id: 3,
+        name: &quot;先知&quot;,
+        pid: 0
+    },
+    {
+        id: 4,
+        name: &quot;巫医&quot;,
+        pid: 0
+    },
+    {
+        id: 5,
+        name: &quot;疾风步&quot;,
+        pid: 1
+    },
+    {
+        id: 6,
+        name: &quot;分身&quot;,
+        pid: 1
+    },
+    {
+        id: 7,
+        name: &quot;致命一击&quot;,
+        pid: 1
+    },
+    {
+        id: 8,
+        name: &quot;剑刃风暴&quot;,
+        pid: 1
+    },
+    {
+        id: 9,
+        name: &quot;治疗波&quot;,
+        pid: 4
+    },
+    {
+        id: 10,
+        name: &quot;妖术&quot;,
+        pid: 4
+    },
+    {
+        id: 11,
+        name: &quot;毒蛇守卫&quot;,
+        pid: 4
+    },
+    {
+        id: 12,
+        name: &quot;无敌&quot;,
+        pid: 4
+    },
+    {
+        id: 13,
+        name: &quot;1级疾风步&quot;,
+        pid: 5
+    },
+    {
+        id: 14,
+        name: &quot;2级疾风步&quot;,
+        pid: 5
+    },
+    {
+        id: 15,
+        name: &quot;3级疾风步&quot;,
+        pid: 5
+    }
+];    
+</code></pre>
+</li>
+<li>
+<p>完成以下题目</p>
+<ul>
+<li>根据id获取对应的数据</li>
+<li>根据id获取它的父亲</li>
+<li>根据id获取它的孩子节点</li>
+<li>根据id获取它所有的上级节点(父，爷...)</li>
+<li>根据id获取它所有的下级节点(孩子，孙子...)</li>
+<li>根据给定的list生成树状结构</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>做完后可以看下彩笔up主实现的方式，我们在下次在分享~</p>
+</blockquote>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">树状数据结构</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  <a href="https://github.com/qianfengg" target="_blank">我的github</a>
+  <a class="rss" href="https://qianfengg.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

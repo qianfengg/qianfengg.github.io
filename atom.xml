@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T07:16:15.570Z</updated>
+    <updated>2020-03-07T07:22:46.107Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qianfengg.github.io"/>
     <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
@@ -11,12 +11,126 @@
     <icon>https://qianfengg.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 梅利奥猪猪の窝</rights>
     <entry>
-        <title type="html"><![CDATA[test]]></title>
-        <id>https://qianfengg.github.io/post/test/</id>
-        <link href="https://qianfengg.github.io/post/test/">
+        <title type="html"><![CDATA[玩耍 - JS树状结构数据]]></title>
+        <id>https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/</id>
+        <link href="https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/">
         </link>
-        <updated>2020-03-07T07:15:13.000Z</updated>
-        <content type="html"><![CDATA[<p>test</p>
+        <updated>2020-03-07T07:19:12.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="树状数据结构">树状数据结构</h1>
+<blockquote>
+<p>背景</p>
+</blockquote>
+<ul>
+<li>算是个简单的算法吧，其实不难</li>
+<li>这边的数据，就拿我们当年的童年，war3举例子</li>
+<li>本人之前一直玩的是兽族，四个英雄，各列举了点技能，满级10级，小技能等级上限3级</li>
+<li>然后就愉快的做题吧</li>
+</ul>
+<blockquote>
+<p>练习</p>
+</blockquote>
+<ul>
+<li>
+<p>先来看下数据格式</p>
+<pre><code class="language-js">let list = [
+    {
+        id: 0,
+        name: &quot;兽族英雄技能&quot;,
+        pid: -1
+    },
+    {
+        id: 1,
+        name: &quot;剑圣&quot;,
+        pid: 0
+    },
+    {
+        id: 2,
+        name: &quot;牛头人酋长&quot;,
+        pid: 0
+    },
+    {
+        id: 3,
+        name: &quot;先知&quot;,
+        pid: 0
+    },
+    {
+        id: 4,
+        name: &quot;巫医&quot;,
+        pid: 0
+    },
+    {
+        id: 5,
+        name: &quot;疾风步&quot;,
+        pid: 1
+    },
+    {
+        id: 6,
+        name: &quot;分身&quot;,
+        pid: 1
+    },
+    {
+        id: 7,
+        name: &quot;致命一击&quot;,
+        pid: 1
+    },
+    {
+        id: 8,
+        name: &quot;剑刃风暴&quot;,
+        pid: 1
+    },
+    {
+        id: 9,
+        name: &quot;治疗波&quot;,
+        pid: 4
+    },
+    {
+        id: 10,
+        name: &quot;妖术&quot;,
+        pid: 4
+    },
+    {
+        id: 11,
+        name: &quot;毒蛇守卫&quot;,
+        pid: 4
+    },
+    {
+        id: 12,
+        name: &quot;无敌&quot;,
+        pid: 4
+    },
+    {
+        id: 13,
+        name: &quot;1级疾风步&quot;,
+        pid: 5
+    },
+    {
+        id: 14,
+        name: &quot;2级疾风步&quot;,
+        pid: 5
+    },
+    {
+        id: 15,
+        name: &quot;3级疾风步&quot;,
+        pid: 5
+    }
+];    
+</code></pre>
+</li>
+<li>
+<p>完成以下题目</p>
+<ul>
+<li>根据id获取对应的数据</li>
+<li>根据id获取它的父亲</li>
+<li>根据id获取它的孩子节点</li>
+<li>根据id获取它所有的上级节点(父，爷...)</li>
+<li>根据id获取它所有的下级节点(孩子，孙子...)</li>
+<li>根据给定的list生成树状结构</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>做完后可以看下彩笔up主实现的方式，我们在下次在分享~</p>
+</blockquote>
 ]]></content>
     </entry>
 </feed>
