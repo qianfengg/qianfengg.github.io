@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>玩耍 - JS树状结构数据 | 梅利奥猪猪の窝</title>
-<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583566339717">
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583566723637">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="玩耍 - JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
@@ -37,7 +37,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://qianfengg.github.io">
-  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583566339717" alt="">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583566723637" alt="">
   </a>
   <h1 class="site-title">
     梅利奥猪猪の窝
@@ -73,7 +73,7 @@
                 2020-03-07
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
                 <a href="https://qianfengg.github.io/tag/f3f8BA87M/" class="post-tag">
@@ -200,14 +200,94 @@
 </ul>
 </li>
 </ul>
+<h1 id="参考答案">参考答案</h1>
 <blockquote>
-<p>做完后可以看下彩笔up主实现的方式，我们在下次在分享~</p>
+<p>可能有更好的处理方式，欢迎大家讨论</p>
 </blockquote>
+<ul>
+<li>
+<p>获取自身</p>
+<pre><code class="language-js">function getSelf(list, id){
+    return list.filter(item =&gt; item.id === id)[0];
+}
+
+// console.log(getSelf(list, 15));    
+</code></pre>
+</li>
+<li>
+<p>获取父亲</p>
+<pre><code class="language-js">function getParent(list, id){
+    let self = getSelf(list, id);
+    return getSelf(list, self.pid);
+}
+
+// console.log(getParent(list, 15));    
+</code></pre>
+</li>
+<li>
+<p>获取孩子</p>
+<pre><code class="language-js">function getChildren(list, id){
+    return list.filter(item =&gt; item.pid === id);
+}
+
+// console.log(getChildren(list, 5));    
+</code></pre>
+</li>
+<li>
+<p>获取上级(父亲，爷爷...)</p>
+<pre><code class="language-js">function getAllParent(list, id){
+    let parent = getParent(list, id);
+    let result = [];
+    while(parent){
+        result.unshift(parent);
+        parent = getParent(list, parent.id);
+    }
+    return result;
+}    
+</code></pre>
+</li>
+<li>
+<p>获取下级(孩子，孙子...)</p>
+<pre><code class="language-js">function getAllChildren(list, id){
+    let children = getChildren(list, id);
+    let result = [].concat(children);
+    children.forEach(child =&gt; {
+        result = result.concat(getChildren(list, child.id));
+    })
+    return result;
+}
+
+// console.log(getAllChildren(list, 1));
+</code></pre>
+</li>
+<li>
+<p>列表转树状 - 递归实现</p>
+<pre><code class="language-js">function list2Tree(list, pid){
+    let len = list.length;
+    function loop(pid){
+        let res = [];
+        for(let i = 0; i &lt; len; i++){
+            let item = list[i];
+            if(item.pid === pid){
+                item.children = loop(item.id);
+                res.push(item);
+            }
+        }
+        return res;
+    }
+    return loop(pid);
+}
+
+console.log(list2Tree(list, 0));    
+</code></pre>
+</li>
+</ul>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
 <li><a href="#%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84">树状数据结构</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E7%AD%94%E6%A1%88">参考答案</a></li>
 </ul>
 
               </div>
