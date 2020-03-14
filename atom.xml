@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://qianfengg.github.io</id>
     <title>梅利奥猪猪の窝</title>
-    <updated>2020-03-07T08:45:15.586Z</updated>
+    <updated>2020-03-14T14:19:34.564Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://qianfengg.github.io"/>
     <link rel="self" href="https://qianfengg.github.io/atom.xml"/>
@@ -140,24 +140,18 @@
 <h3 id="获取自身">获取自身</h3>
 <pre><code class="language-js">function getSelf(list, id){
     return list.filter(item =&gt; item.id === id)[0];
-}
-
-// console.log(getSelf(list, 15));    
+}  
 </code></pre>
 <h3 id="获取父亲">获取父亲</h3>
 <pre><code class="language-js">function getParent(list, id){
     let self = getSelf(list, id);
     return getSelf(list, self.pid);
-}
-
-// console.log(getParent(list, 15));    
+}   
 </code></pre>
 <h3 id="获取孩子">获取孩子</h3>
 <pre><code class="language-js">function getChildren(list, id){
     return list.filter(item =&gt; item.pid === id);
 }
-
-// console.log(getChildren(list, 5));    
 </code></pre>
 <h3 id="获取上级父亲爷爷">获取上级(父亲，爷爷...)</h3>
 <pre><code class="language-js">function getAllParent(list, id){
@@ -179,8 +173,6 @@
     })
     return result;
 }
-
-// console.log(getAllChildren(list, 1));
 </code></pre>
 <h3 id="列表转树状-递归实现">列表转树状 - 递归实现</h3>
 <pre><code class="language-js">function list2Tree(list, pid){
@@ -197,9 +189,7 @@
         return res;
     }
     return loop(pid);
-}
-
-console.log(list2Tree(list, 0));    
+} 
 </code></pre>
 ]]></content>
     </entry>

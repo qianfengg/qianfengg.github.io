@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>玩耍JS树状结构数据 | 梅利奥猪猪の窝</title>
-<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1583570709533">
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1584195565838">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="玩耍JS树状结构数据 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
@@ -34,7 +34,7 @@ let list = [
       <div class="main-content">
         <div class="site-header">
   <a href="https://qianfengg.github.io">
-  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1583570709533" alt="">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1584195565838" alt="">
   </a>
   <h1 class="site-title">
     梅利奥猪猪の窝
@@ -211,24 +211,18 @@ let list = [
 <h3 id="获取自身">获取自身</h3>
 <pre><code class="language-js">function getSelf(list, id){
     return list.filter(item =&gt; item.id === id)[0];
-}
-
-// console.log(getSelf(list, 15));    
+}  
 </code></pre>
 <h3 id="获取父亲">获取父亲</h3>
 <pre><code class="language-js">function getParent(list, id){
     let self = getSelf(list, id);
     return getSelf(list, self.pid);
-}
-
-// console.log(getParent(list, 15));    
+}   
 </code></pre>
 <h3 id="获取孩子">获取孩子</h3>
 <pre><code class="language-js">function getChildren(list, id){
     return list.filter(item =&gt; item.pid === id);
 }
-
-// console.log(getChildren(list, 5));    
 </code></pre>
 <h3 id="获取上级父亲爷爷">获取上级(父亲，爷爷...)</h3>
 <pre><code class="language-js">function getAllParent(list, id){
@@ -250,8 +244,6 @@ let list = [
     })
     return result;
 }
-
-// console.log(getAllChildren(list, 1));
 </code></pre>
 <h3 id="列表转树状-递归实现">列表转树状 - 递归实现</h3>
 <pre><code class="language-js">function list2Tree(list, pid){
@@ -268,9 +260,7 @@ let list = [
         return res;
     }
     return loop(pid);
-}
-
-console.log(list2Tree(list, 0));    
+} 
 </code></pre>
 
               </div>
