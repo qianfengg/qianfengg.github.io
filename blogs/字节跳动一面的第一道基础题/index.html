@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const Foo = (function(){
+      let idIndex = 1;
+      return function(){
+        // console.log(this instanceof Foo)
+        if (this instanceof Foo) {
+          // 使用了new 会自动返回对象~
+          this.id = idIndex++;
+        } else {
+          // 没有使用new，我们帮它返回~
+          return {
+            id: idIndex++
+          }
+        }
+      }
+    })()
+    let a = new Foo();
+    console.log(a);
+    let b = Foo();
+    console.log(b);
+    let c = Foo();
+    console.log(c);
+    let d = new Foo();
+    console.log(d);
+  </script>
+</body>
+</html>
