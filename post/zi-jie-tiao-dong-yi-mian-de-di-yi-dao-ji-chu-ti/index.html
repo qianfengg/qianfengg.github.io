@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>字节跳动一面的第一道基础题 | 梅利奥猪猪の窝</title>
+<link rel="shortcut icon" href="https://qianfengg.github.io/favicon.ico?v=1585657558683">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://qianfengg.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="字节跳动一面的第一道基础题 | 梅利奥猪猪の窝 - Atom Feed" href="https://qianfengg.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="背景概述
+大家好，我是梅丽奥猪猪，本人属于萌新前端一枚，写的不好请大家多多关照哈，前一阵子有幸接到了字节跳动的面试邀请，还是很开心的，还是那句话，基础最重要，虽然我二面已经挂了，但还是想分享一下关于基础的一些比较有意思的题目~
+题目
+第一轮..." />
+    <meta name="keywords" content="学习,js" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://qianfengg.github.io">
+  <img class="avatar" src="https://qianfengg.github.io/images/avatar.png?v=1585657558683" alt="">
+  </a>
+  <h1 class="site-title">
+    梅利奥猪猪の窝
+  </h1>
+  <p class="site-description">
+    for my dream
+  </p>
+  <div class="menu-container">
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              字节跳动一面的第一道基础题
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-03-31
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://qianfengg.github.io/tag/f3f8BA87M/" class="post-tag">
+                  # 学习
+                </a>
+              
+                <a href="https://qianfengg.github.io/tag/o4KL-ey2g/" class="post-tag">
+                  # js
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="背景概述">背景概述</h2>
+<p>大家好，我是梅丽奥猪猪，本人属于萌新前端一枚，写的不好请大家多多关照哈，前一阵子有幸接到了字节跳动的面试邀请，还是很开心的，还是那句话，基础最重要，虽然我二面已经挂了，但还是想分享一下关于基础的一些比较有意思的题目~</p>
+<h2 id="题目">题目</h2>
+<p>第一轮面试还是比较轻松的，面试官一开始就说一面还是比较简单基础的，让我放轻松，很nice，大多数面试应该一开始都是聊技术(如果聊的不是很好，估计也到不了下面的直播写代码吧)，然后字节跳动之后就是牛客网直播写代码了，只见面试官悠悠的写下了这么2行代码，并让我实现它</p>
+<pre><code class="language-js">let a = new Foo() //a.id -&gt; 1
+let b = new Foo() //b.id -&gt; 2
+</code></pre>
+<h2 id="解答过程">解答过程</h2>
+<h3 id="使用全局变量">使用全局变量</h3>
+<p>作为萌新的我，看到这个，这么简单，随手一写~</p>
+<pre><code class="language-js">let idIndex = 1;
+function Foo () {
+  this.id = idIndex++;
+}
+let a = new Foo();
+console.log(a);
+let b = new Foo();
+console.log(b);
+</code></pre>
+<p>很明显实现了效果，对于萌新来说也特别好理解，每次实例化对象的时候，把全局属性后加加，完美达到了面试官的要求，只见面试官悠悠的说，嗯可以，但能不能不用全局变量。。。</p>
+<h3 id="使用静态属性">使用静态属性</h3>
+<p>这有什么难的，飒！直接把全局改成静态的就行了~</p>
+<pre><code class="language-js">function Foo () {
+  this.id = Foo.idIndex++;
+}
+Foo.idIndex = 1
+let a = new Foo();
+console.log(a);
+let b = new Foo();
+console.log(b);
+</code></pre>
+<p>面试官一看眉头一皱，这小子还是没有写出我想要的代码啊，&quot;额，能不能不用全局，和静态属性实现这个效果呢&quot;，此时的我也就只能想出，还有闭包的方式，&quot;那用闭包？&quot;，面试官表示那你就show下吧</p>
+<h3 id="使用闭包">使用闭包</h3>
+<p>这个对于萌新的我依然还是很简单的，老子写代码就是一把梭</p>
+<pre><code class="language-js">const Foo = (function(){
+  let idIndex = 1;
+  return function(){
+    this.id = idIndex++;
+  }
+})()
+let a = new Foo();
+console.log(a);
+let b = new Foo();
+console.log(b);
+</code></pre>
+<p>唰唰唰几下就写完了，面试官就点了点头，嗯看来还是比较满意我的写法吧，&quot;可以，那我们在加深点题目难度吧，原本的题目改成这样&quot;</p>
+<pre><code class="language-js">let a = Foo() //a.id -&gt; 1
+let b = new Foo() //b.id -&gt; 2
+let c = new Foo() //c.id -&gt; 3
+let d = Foo() //d.id -&gt; 4
+</code></pre>
+<h3 id="使用instance-of救场">使用instance of救场</h3>
+<p>讲道理一开始是把我卡住一会的，主要是要处理这个this的问题，但面试官还是很友善的提示了一句话，如何判断一个方法是直接调用还是使用new调用，有没有用过instanceof，哈哈好在我反应快一下子就写出了代码，当然当中也有这么一段代码调试了下</p>
+<pre><code class="language-js">const Foo = (function(){
+  let idIndex = 1;
+  return function(){
+    // this.id = idIndex++;
+    console.log(this instanceof Foo)
+  }
+})()
+let a = new Foo();
+// console.log(a);
+let b = Foo();
+// console.log(b);
+let c = Foo();
+// console.log(c);
+let d = new Foo();
+// console.log(d);
+</code></pre>
+<p>上述代码很明显，打印出来的结果就是<code>true</code>，<code>false</code>，<code>false</code>，<code>true</code>，因为就第一个和最后个使用了new，属于Foo的实例，接着就是根据这个来做判断处理，首先大家其实还要对new要有一定的理解，new会改变this指向，指向实例化的实例，并且会在最后方法执行完，把实例return出去，如果不使用new直接调用函数，函数没有返回值默认返回undefined，知道这些就可以干这个题了</p>
+<pre><code class="language-js">const Foo = (function(){
+  let idIndex = 1;
+  return function(){
+    // console.log(this instanceof Foo)
+    if (this instanceof Foo) {
+      // 使用了new 会自动返回对象~
+      this.id = idIndex++;
+    } else {
+      // 没有使用new，我们帮它返回~
+      return {
+        id: idIndex++
+      }
+    }
+  }
+})()
+let a = new Foo();
+console.log(a); // {id: 1}
+let b = Foo();
+console.log(b); // {id: 2}
+let c = Foo();
+console.log(c); // {id: 3}
+let d = new Foo();
+console.log(d); // {id: 4}
+</code></pre>
+<p>这样就完成了第一道笔试题~</p>
+<h2 id="总结">总结</h2>
+<p>总体来说，第一道题还是比较轻松愉悦的，后面的题目后续我也会慢慢分享，其实一面的题目大多数还是比较基础的，最难的可能就是让你手写个Promise，以及实现Promise的一些静态方法，一面的面试官对我还是比较满意的，于是还增加了自信，然后就被第二轮面试血虐了，这里是萌新前端开发，记录自己的面试经历，以及空了分享一些知识，希望能与大家共同成长，如有错误，希望大佬轻喷，并且能指导前行<sub>谢谢大家支持</sub></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E8%83%8C%E6%99%AF%E6%A6%82%E8%BF%B0">背景概述</a></li>
+<li><a href="#%E9%A2%98%E7%9B%AE">题目</a></li>
+<li><a href="#%E8%A7%A3%E7%AD%94%E8%BF%87%E7%A8%8B">解答过程</a>
+<ul>
+<li><a href="#%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F">使用全局变量</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E9%9D%99%E6%80%81%E5%B1%9E%E6%80%A7">使用静态属性</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E9%97%AD%E5%8C%85">使用闭包</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8instance-of%E6%95%91%E5%9C%BA">使用instance of救场</a></li>
+</ul>
+</li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://qianfengg.github.io/post/wan-shua-js-shu-zhuang-jie-gou-shu-ju/">
+              <h3 class="post-title">
+                玩耍JS树状结构数据
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  <a href="https://github.com/qianfengg" target="_blank">我的github</a>
+  <a class="rss" href="https://qianfengg.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
