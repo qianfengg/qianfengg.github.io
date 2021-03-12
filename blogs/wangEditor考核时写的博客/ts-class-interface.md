@@ -48,11 +48,6 @@ Button是什么，DropList什么鬼，Panel嗯？？
 
 * MenuActive - implements后必须要实现方法**tryChangeActive**
     * 这个方法其实就是激活菜单的，比如你富文本中有加粗的字体和没有加粗的字体，当你点击光标在没加粗的字体的时候，加粗的菜单不会高亮，但你点到加粗的字体的时候，菜单就要高亮，所以对于每个菜单来说都必须`implements MenuActive`， 且`tryChangeActive`方法名见名知意，大佬架构牛逼！
-* DropList - implements后必须要实现方法**show**和**hide**
-    * 下拉菜单的展示和隐藏很好理解，所以DropListMenu会去实现DropList接口，大佬架构牛逼！
-* Pannel - implements后必须要实现**create**和**remove**
-    * 创建pannel和移除pannel简单易懂，所以PanelMenu会去实现Panel接口，大佬架构牛逼！
-
 ### 还有很多细节没说，先来随便贴一个源码给大家一起看看，分析源码啦
 
 先来看看最大父类，源码如下
